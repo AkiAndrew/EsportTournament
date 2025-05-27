@@ -1,0 +1,121 @@
+Player ID,First Name,Last Name,Team ID,Team Name,University,Backup,points
+P001,Taylor,Thomas,T01,Team_01,Cedar Heights Academy,True,210
+P002,Alex,Johnson,T01,Team_01,Cedar Heights Academy,False,52
+P003,Drew,Anderson,T01,Team_01,Cedar Heights Academy,False,118
+P004,Riley,Anderson,T01,Team_01,Grand Valley State,False,88
+P005,Casey,Anderson,T01,Team_01,Greenfield State,False,84
+P006,Skyler,Johnson,T01,Team_01,Silverpine University,False,274
+P007,Alex,Taylor,T02,Team_02,Northbridge College,True,211
+P008,Taylor,Martin,T02,Team_02,Northbridge College,False,67
+P009,Taylor,Harris,T02,Team_02,Grand Valley State,False,87
+P010,Casey,Taylor,T02,Team_02,Cedar Heights Academy,False,266
+P011,Jordan,Anderson,T02,Team_02,Riverside Technical University,False,64
+P012,Drew,Thomas,T02,Team_02,Riverside Technical University,False,171
+P013,Skyler,Jackson,T03,Team_03,Lakeshore Institute,True,99
+P014,Riley,Thomas,T03,Team_03,Lakeshore Institute,False,257
+P015,Jordan,White,T03,Team_03,Riverside Technical University,False,212
+P016,Riley,Harris,T03,Team_03,Greenfield State,False,263
+P017,Morgan,Taylor,T03,Team_03,Lakeshore Institute,False,115
+P018,Quinn,Taylor,T03,Team_03,Riverside Technical University,False,75
+P019,Riley,White,T04,Team_04,Grand Valley State,True,254
+P020,Casey,Martin,T04,Team_04,Greenfield State,False,179
+P021,Reese,Anderson,T04,Team_04,Hawthorne Tech,False,236
+P022,Skyler,Anderson,T04,Team_04,Hawthorne Tech,False,227
+P023,Alex,Thomas,T04,Team_04,Lakeshore Institute,False,150
+P024,Quinn,Jackson,T04,Team_04,Lakeshore Institute,False,94
+P025,Riley,Anderson,T05,Team_05,Grand Valley State,True,262
+P026,Casey,Martin,T05,Team_05,Silverpine University,False,158
+P027,Skyler,Johnson,T05,Team_05,Greenfield State,False,88
+P028,Casey,Johnson,T05,Team_05,Lakeshore Institute,False,125
+P029,Reese,Smith,T05,Team_05,Grand Valley State,False,258
+P030,Quinn,Johnson,T05,Team_05,Northbridge College,False,221
+P031,Reese,Taylor,T06,Team_06,Eastwind University,True,229
+P032,Skyler,Taylor,T06,Team_06,Mount Crest College,False,296
+P033,Morgan,Smith,T06,Team_06,Lakeshore Institute,False,124
+P034,Quinn,Johnson,T06,Team_06,Greenfield State,False,246
+P035,Morgan,Jackson,T06,Team_06,Lakeshore Institute,False,60
+P036,Morgan,Johnson,T06,Team_06,Northbridge College,False,96
+P037,Reese,Harris,T07,Team_07,Silverpine University,True,285
+P038,Jordan,Smith,T07,Team_07,Lakeshore Institute,False,213
+P039,Taylor,Jackson,T07,Team_07,Lakeshore Institute,False,98
+P040,Quinn,Anderson,T07,Team_07,Hawthorne Tech,False,118
+P041,Taylor,Harris,T07,Team_07,Riverside Technical University,False,230
+P042,Riley,Smith,T07,Team_07,Eastwind University,False,202
+P043,Morgan,Johnson,T08,Team_08,Mount Crest College,True,100
+P044,Quinn,Harris,T08,Team_08,Riverside Technical University,False,207
+P045,Reese,Harris,T08,Team_08,Lakeshore Institute,False,280
+P046,Quinn,Smith,T08,Team_08,Northbridge College,False,222
+P047,Taylor,Jackson,T08,Team_08,Greenfield State,False,267
+P048,Drew,Johnson,T08,Team_08,Silverpine University,False,274
+P049,Quinn,Jackson,T09,Team_09,Mount Crest College,True,173
+P050,Jordan,Harris,T09,Team_09,Riverside Technical University,False,59
+P051,Drew,Thomas,T09,Team_09,Greenfield State,False,273
+P052,Alex,Smith,T09,Team_09,Northbridge College,False,271
+P053,Riley,Johnson,T09,Team_09,Silverpine University,False,128
+P054,Alex,Johnson,T09,Team_09,Northbridge College,False,296
+P055,Drew,Thomas,T10,Team_10,Lakeshore Institute,True,247
+P056,Jordan,Jackson,T10,Team_10,Cedar Heights Academy,False,290
+P057,Alex,Harris,T10,Team_10,Silverpine University,False,294
+P058,Drew,Jackson,T10,Team_10,Northbridge College,False,168
+P059,Casey,Taylor,T10,Team_10,Mount Crest College,False,139
+P060,Skyler,Taylor,T10,Team_10,Greenfield State,False,51
+P061,Jordan,White,T11,Team_11,Eastwind University,True,181
+P062,Taylor,Harris,T11,Team_11,Lakeshore Institute,False,130
+P063,Quinn,Harris,T11,Team_11,Lakeshore Institute,False,271
+P064,Quinn,Anderson,T11,Team_11,Eastwind University,False,187
+P065,Jordan,Taylor,T11,Team_11,Riverside Technical University,False,54
+P066,Alex,Smith,T11,Team_11,Greenfield State,False,130
+P067,Reese,Thomas,T12,Team_12,Hawthorne Tech,True,172
+P068,Skyler,Taylor,T12,Team_12,Riverside Technical University,False,268
+P069,Alex,Taylor,T12,Team_12,Greenfield State,False,260
+P070,Alex,Jackson,T12,Team_12,Cedar Heights Academy,False,284
+P071,Jordan,Smith,T12,Team_12,Northbridge College,False,207
+P072,Skyler,Jackson,T12,Team_12,Riverside Technical University,False,236
+P073,Alex,Taylor,T13,Team_13,Eastwind University,True,75
+P074,Riley,Smith,T13,Team_13,Northbridge College,False,262
+P075,Drew,Anderson,T13,Team_13,Cedar Heights Academy,False,185
+P076,Morgan,Taylor,T13,Team_13,Cedar Heights Academy,False,292
+P077,Reese,Anderson,T13,Team_13,Hawthorne Tech,False,278
+P078,Casey,Martin,T13,Team_13,Lakeshore Institute,False,226
+P079,Taylor,Taylor,T14,Team_14,Greenfield State,True,283
+P080,Riley,Anderson,T14,Team_14,Mount Crest College,False,284
+P081,Reese,Anderson,T14,Team_14,Eastwind University,False,241
+P082,Quinn,Jackson,T14,Team_14,Eastwind University,False,172
+P083,Casey,Anderson,T14,Team_14,Riverside Technical University,False,158
+P084,Quinn,Harris,T14,Team_14,Greenfield State,False,183
+P085,Jordan,Jackson,T15,Team_15,Lakeshore Institute,True,270
+P086,Skyler,Martin,T15,Team_15,Cedar Heights Academy,False,120
+P087,Quinn,Smith,T15,Team_15,Silverpine University,False,75
+P088,Skyler,Harris,T15,Team_15,Mount Crest College,False,142
+P089,Taylor,Martin,T15,Team_15,Northbridge College,False,258
+P090,Quinn,Martin,T15,Team_15,Greenfield State,False,120
+P091,Morgan,Johnson,T16,Team_16,Grand Valley State,True,273
+P092,Skyler,Jackson,T16,Team_16,Lakeshore Institute,False,166
+P093,Morgan,Johnson,T16,Team_16,Grand Valley State,False,215
+P094,Jordan,Thompson,T16,Team_16,Hawthorne Tech,False,78
+P095,Morgan,Harris,T16,Team_16,Lakeshore Institute,False,262
+P096,Casey,Johnson,T16,Team_16,Lakeshore Institute,False,137
+P097,Quinn,Johnson,T17,Team_17,Northbridge College,True,187
+P098,Drew,White,T17,Team_17,Silverpine University,False,234
+P099,Casey,Johnson,T17,Team_17,Silverpine University,False,86
+P100,Reese,Harris,T17,Team_17,Eastwind University,False,158
+P101,Jordan,Thomas,T17,Team_17,Northbridge College,False,142
+P102,Jordan,Anderson,T17,Team_17,Grand Valley State,False,198
+P103,Quinn,Thompson,T18,Team_18,Lakeshore Institute,True,77
+P104,Alex,Taylor,T18,Team_18,Riverside Technical University,False,162
+P105,Reese,Jackson,T18,Team_18,Mount Crest College,False,113
+P106,Drew,Anderson,T18,Team_18,Riverside Technical University,False,168
+P107,Riley,Johnson,T18,Team_18,Eastwind University,False,155
+P108,Riley,Thomas,T18,Team_18,Hawthorne Tech,False,119
+P109,Riley,Thompson,T19,Team_19,Cedar Heights Academy,True,86
+P110,Jordan,Jackson,T19,Team_19,Cedar Heights Academy,False,244
+P111,Taylor,Anderson,T19,Team_19,Silverpine University,False,270
+P112,Quinn,Martin,T19,Team_19,Riverside Technical University,False,128
+P113,Morgan,Taylor,T19,Team_19,Greenfield State,False,71
+P114,Drew,Martin,T19,Team_19,Greenfield State,False,146
+P115,Morgan,Taylor,T20,Team_20,Eastwind University,True,172
+P116,Reese,Jackson,T20,Team_20,Hawthorne Tech,False,104
+P117,Drew,White,T20,Team_20,Eastwind University,False,296
+P118,Drew,Anderson,T20,Team_20,Grand Valley State,False,240
+P119,Alex,Harris,T20,Team_20,Cedar Heights Academy,False,255
+P120,Drew,Jackson,T20,Team_20,Eastwind University,False,163
