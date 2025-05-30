@@ -4,6 +4,9 @@
 #include <map>
 #include <cmath>
 #include <cstring>
+#include <iomanip>
+#include <cstdlib>
+#include <ctime>
 
 using namespace std;
 
@@ -27,15 +30,42 @@ struct Team {
     int totalPoints;
 };
 
-// Global arrays
+struct MatchResult {
+    string matchId;
+    string teamId;
+    string matchType;
+    string result; // "Win" or "Lose"
+};
+
+struct PlayerStats {
+    string matchId;
+    string playerId;
+    string playerName;
+    string teamId;
+    int kills;
+    int deaths;
+    int assists;
+    bool isMVP;
+};
+
+// Globals
 Player players[MAX_PLAYERS];
 int playerCount = 0;
 
 Team teams[MAX_TEAMS];
 int teamCount = 0;
 
-map<string, string> teamIds;  // teamName -> teamId
-map<string, int> teamPoints;  // teamName -> totalPoints
+map<string, string> teamIds;   // teamName -> teamId
+map<string, int> teamPoints;   // teamName -> totalPoints
+
+int matchCounter = 1;
+
+// Utility to format match ID
+string getMatchId() {
+    stringstream ss;
+    ss << "M" << setfill('0') << setw(3) << matchCounter++;
+    return ss.str();
+}
 
 void readCSV(const string& filename) {
     ifstream file(filename);
@@ -148,8 +178,8 @@ void sortTeamsByPoints(Team teams[], int count) {
 void displayMatches(Team roundTeams[], int count) {
     cout << "\n--- Round Matches (closest in points) ---\n";
     for (int i = 0; i + 1 < count; i += 2) {
-        cout << "Match: " << roundTeams[i].name << " [" << roundTeams[i].id << "] (" << roundTeams[i].totalPoints << " pts) vs "
-             << roundTeams[i + 1].name << " [" << roundTeams[i + 1].id << "] (" << roundTeams[i + 1].totalPoints << " pts)\n";
+        cout << "Match: " << roundTeams[i].name << " [" << roundTeams[i].id << "] vs "
+             << roundTeams[i + 1].name << " [" << roundTeams[i + 1].id << "]\n";
     }
     if (count % 2 != 0) {
         cout << "Team: " << roundTeams[count - 1].name << " [" << roundTeams[count - 1].id << "] gets a bye.\n";
@@ -161,6 +191,31 @@ int getTeamIndexById(Team roundTeams[], int count, const string& id) {
         if (roundTeams[i].id == id) return i;
     }
     return -1;
+}
+
+void logMatchAndStats(string matchId, string matchType, Team team1, Team team2, string winnerId) {
+    ofstream matchFile("match_results.csv", ios::app);
+    ofstream statsFile("player_stats.csv", ios::app);
+
+    for (int i = 0; i < 2; i++) {
+        Team team = (i == 0) ? team1 : team2;
+        string result = (team.id == winnerId) ? "Win" : "Lose";
+
+        matchFile << matchId << "," << team.id << "," << matchType << "," << result << "\n";
+
+        for (int j = 0; j < playerCount; j++) {
+            if (players[j].teamId == team.id) {
+                int kills = rand() % 11;
+                int deaths = rand() % 6;
+                int assists = rand() % 8;
+                bool isMVP = (rand() % 5 == 0); // 20% chance
+
+                statsFile << matchId << "," << players[j].id << "," << players[j].firstName + " " + players[j].lastName
+                          << "," << team.id << "," << kills << "," << deaths << "," << assists << ","
+                          << (isMVP ? "true" : "false") << "\n";
+            }
+        }
+    }
 }
 
 void runTournament(Team qualified[MAX_QUALIFIED]) {
@@ -175,6 +230,8 @@ void runTournament(Team qualified[MAX_QUALIFIED]) {
     while (roundCount > 1) {
         cout << "\n========== ROUND " << round << " ==========\n";
 
+        string matchType = (round == 1) ? "Quarterfinal" : (round == 2) ? "Semifinal" : "Final";
+
         sortTeamsByPoints(currentRound, roundCount);
         displayMatches(currentRound, roundCount);
 
@@ -184,12 +241,15 @@ void runTournament(Team qualified[MAX_QUALIFIED]) {
         for (int i = 0; i + 1 < roundCount; i += 2) {
             string winnerId;
             bool valid = false;
+            string matchId = getMatchId();
+
             while (!valid) {
                 cout << "Enter the winning team ID for match (" << currentRound[i].id << " vs " << currentRound[i + 1].id << "): ";
                 cin >> winnerId;
                 if (winnerId == currentRound[i].id || winnerId == currentRound[i + 1].id) {
                     int index = getTeamIndexById(currentRound, roundCount, winnerId);
                     nextRound[nextCount++] = currentRound[index];
+                    logMatchAndStats(matchId, matchType, currentRound[i], currentRound[i + 1], winnerId);
                     valid = true;
                 } else {
                     cout << "Invalid input. Try again.\n";
@@ -214,8 +274,9 @@ void runTournament(Team qualified[MAX_QUALIFIED]) {
     }
 }
 
-// Entry function called from main.cpp
+// Entry point
 void manageMatches() {
+    srand(time(0));
     readCSV("Groups_dataset.csv");
     displayAllTeams();
 
