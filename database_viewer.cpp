@@ -113,6 +113,10 @@ void searchPlayerStats() {
                  << setw(10) << teamId << setw(8) << kills << setw(8) << deaths
                  << setw(8) << assists << setw(6) << mvp << "\n";
         }
+        if (choice == 3) {
+    for (char& c : keyword) c = tolower(c);
+}
+
     }
     file.close();
 }
@@ -120,18 +124,30 @@ void searchPlayerStats() {
 void searchMatchResults() {
     int choice;
     cout << "\n-- Filter Match Results --\n";
-    cout << "1. By Match ID\n2. By Team ID\n3. By Match Type (e.g., Final)\nEnter choice: ";
+    cout << "1. By Match ID\n2. By Team ID\n3. By Match Type (Quarterfinal, Semifinal, Final)\nEnter choice: ";
     cin >> choice;
 
     string keyword;
     cout << "Enter keyword: ";
     cin >> keyword;
 
+    // Convert keyword to lowercase for matching
+    for (char& c : keyword) c = tolower(c);
+
+    // Validate match type keyword if choice is 3
+    if (choice == 3) {
+        if (keyword != "quarterfinal" && keyword != "semifinal" && keyword != "final") {
+            cout << "Invalid match type. Please enter 'Quarterfinal', 'Semifinal', or 'Final'.\n";
+            return;
+        }
+    }
+
     ifstream file("match_results.csv");
     if (!file.is_open()) {
         cerr << "Error opening file.\n";
         return;
     }
+
     string line;
     getline(file, line); // skip header
     cout << "\n--- Filtered Match Results ---\n";
@@ -142,14 +158,21 @@ void searchMatchResults() {
         string matchId, teamId, matchType, result;
         getline(ss, matchId, ','); getline(ss, teamId, ','); getline(ss, matchType, ','); getline(ss, result, ',');
 
-        if ((choice == 1 && containsIgnoreCase(matchId, keyword)) ||
-            (choice == 2 && containsIgnoreCase(teamId, keyword)) ||
-            (choice == 3 && containsIgnoreCase(matchType, keyword))) {
+        if (choice == 1 && containsIgnoreCase(matchId, keyword)) {
             cout << left << setw(8) << matchId << setw(10) << teamId << setw(15) << matchType << setw(6) << result << "\n";
+        } else if (choice == 2 && containsIgnoreCase(teamId, keyword)) {
+            cout << left << setw(8) << matchId << setw(10) << teamId << setw(15) << matchType << setw(6) << result << "\n";
+        } else if (choice == 3) {
+            // Convert matchType to lowercase for comparison
+            for (char& c : matchType) c = tolower(c);
+            if (matchType == keyword) {
+                cout << left << setw(8) << matchId << setw(10) << teamId << setw(15) << matchType << setw(6) << result << "\n";
+            }
         }
     }
     file.close();
 }
+
 
 // === Main Database Menu ===
 void databaseMenu() {

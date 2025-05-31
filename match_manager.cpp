@@ -7,6 +7,8 @@
 #include <iomanip>
 #include <cstdlib>
 #include <ctime>
+#include <algorithm>
+
 
 using namespace std;
 
@@ -22,6 +24,7 @@ struct Player {
     string teamName;
     string university;
     int points;
+    bool isBackup = false;
 };
 
 struct Team {
@@ -79,14 +82,13 @@ void readCSV(const string& filename) {
 
     while (getline(file, line)) {
         stringstream ss(line);
-        string fields[8];
-        for (int i = 0; i < 8 && getline(ss, fields[i], ','); i++);
+        string fields[9];
+        for (int i = 0; i < 9 && getline(ss, fields[i], ','); i++);
 
         if (fields[0].empty() || fields[7].empty()) {
             cerr << "Skipping row due to insufficient data.\n";
             continue;
         }
-
         Player p;
         p.id = fields[0];
         p.firstName = fields[1];
@@ -94,12 +96,19 @@ void readCSV(const string& filename) {
         p.teamId = fields[3];
         p.teamName = fields[4];
         p.university = fields[5];
+        // Backup is column 6
+        string backupStr = fields[6];
+        backupStr.erase(remove_if(backupStr.begin(), backupStr.end(), ::isspace), backupStr.end());
+        p.isBackup = (backupStr == "true" || backupStr == "1" || backupStr == "True");
+
+        // Points is column 7
         try {
             p.points = stoi(fields[7]);
         } catch (...) {
             cerr << "Skipping row due to invalid points format.\n";
             continue;
         }
+
 
         players[playerCount++] = p;
         teamIds[p.teamName] = p.teamId;
@@ -203,20 +212,35 @@ void logMatchAndStats(string matchId, string matchType, Team team1, Team team2, 
 
         matchFile << matchId << "," << team.id << "," << matchType << "," << result << "\n";
 
-        for (int j = 0; j < playerCount; j++) {
-            if (players[j].teamId == team.id) {
-                int kills = rand() % 11;
-                int deaths = rand() % 6;
-                int assists = rand() % 8;
-                bool isMVP = (rand() % 5 == 0); // 20% chance
+        // === MVP logic ===
+        int nonBackupIndices[50]; // temporary array to store indices of non-backup players
+        int count = 0;
 
-                statsFile << matchId << "," << players[j].id << "," << players[j].firstName + " " + players[j].lastName
-                          << "," << team.id << "," << kills << "," << deaths << "," << assists << ","
-                          << (isMVP ? "true" : "false") << "\n";
+        for (int j = 0; j < playerCount; j++) {
+            if (players[j].teamId == team.id && !players[j].isBackup) {
+                nonBackupIndices[count++] = j;
             }
+        }
+
+        int mvpIndex = -1;
+        if (team.id == winnerId && count > 0) {
+            mvpIndex = nonBackupIndices[rand() % count]; // pick random non-backup player
+        }
+
+        for (int i = 0; i < count; i++) {
+            int j = nonBackupIndices[i];
+            bool isMVP = (j == mvpIndex);
+            int kills = rand() % 11;
+            int deaths = rand() % 6;
+            int assists = rand() % 8;
+
+            statsFile << matchId << "," << players[j].id << "," << players[j].firstName + " " + players[j].lastName
+                      << "," << team.id << "," << kills << "," << deaths << "," << assists << ","
+                      << (isMVP ? "true" : "false") << "\n";
         }
     }
 }
+
 
 void runTournament(Team qualified[MAX_QUALIFIED]) {
     int roundCount = MAX_QUALIFIED;

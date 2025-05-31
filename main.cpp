@@ -13,7 +13,7 @@ int main() {
         cout << "1. Manage Matches\n";
         cout << "2. Option 2 (Coming Soon)\n";
         cout << "3. Option 3 (Coming Soon)\n";
-        cout << "4. Gaming Data Management System\n";
+        cout << "4. View Game Data\n";
         cout << "5. Exit\n";
         cout << "Choose an option (1-5): ";
         cin >> choice;
