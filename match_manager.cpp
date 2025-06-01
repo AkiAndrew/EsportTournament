@@ -9,7 +9,6 @@
 #include <ctime>
 #include <algorithm>
 
-
 using namespace std;
 
 const int MAX_PLAYERS = 500;
@@ -37,7 +36,7 @@ struct MatchResult {
     string matchId;
     string teamId;
     string matchType;
-    string result; // "Win" or "Lose"
+    string result;
 };
 
 struct PlayerStats {
@@ -51,19 +50,44 @@ struct PlayerStats {
     bool isMVP;
 };
 
-// Globals
+struct Round {
+    Team teams[MAX_QUALIFIED];
+    int count;
+};
+
 Player players[MAX_PLAYERS];
 int playerCount = 0;
 
 Team teams[MAX_TEAMS];
 int teamCount = 0;
 
-map<string, string> teamIds;   // teamName -> teamId
-map<string, int> teamPoints;   // teamName -> totalPoints
+map<string, string> teamIds;
+map<string, int> teamPoints;
 
 int matchCounter = 1;
 
-// Utility to format match ID
+Round roundQueue[10];
+int front = 0, rear = 0;
+
+Round matchHistory[10];
+int historyTop = -1;
+
+void enqueueRound(Round r) {
+    roundQueue[rear++] = r;
+}
+
+Round dequeueRound() {
+    return roundQueue[front++];
+}
+
+void pushHistory(Round r) {
+    matchHistory[++historyTop] = r;
+}
+
+Round peekHistory() {
+    return matchHistory[historyTop];
+}
+
 string getMatchId() {
     stringstream ss;
     ss << "M" << setfill('0') << setw(3) << matchCounter++;
@@ -78,7 +102,7 @@ void readCSV(const string& filename) {
     }
 
     string line;
-    getline(file, line); // Skip header
+    getline(file, line);
 
     while (getline(file, line)) {
         stringstream ss(line);
@@ -89,6 +113,7 @@ void readCSV(const string& filename) {
             cerr << "Skipping row due to insufficient data.\n";
             continue;
         }
+
         Player p;
         p.id = fields[0];
         p.firstName = fields[1];
@@ -96,12 +121,10 @@ void readCSV(const string& filename) {
         p.teamId = fields[3];
         p.teamName = fields[4];
         p.university = fields[5];
-        // Backup is column 6
         string backupStr = fields[6];
         backupStr.erase(remove_if(backupStr.begin(), backupStr.end(), ::isspace), backupStr.end());
         p.isBackup = (backupStr == "true" || backupStr == "1" || backupStr == "True");
 
-        // Points is column 7
         try {
             p.points = stoi(fields[7]);
         } catch (...) {
@@ -109,13 +132,11 @@ void readCSV(const string& filename) {
             continue;
         }
 
-
         players[playerCount++] = p;
         teamIds[p.teamName] = p.teamId;
         teamPoints[p.teamName] += p.points;
     }
 
-    // Fill teams array
     map<string, bool> added;
     for (int i = 0; i < playerCount; i++) {
         string name = players[i].teamName;
@@ -209,11 +230,9 @@ void logMatchAndStats(string matchId, string matchType, Team team1, Team team2, 
     for (int i = 0; i < 2; i++) {
         Team team = (i == 0) ? team1 : team2;
         string result = (team.id == winnerId) ? "Win" : "Lose";
-
         matchFile << matchId << "," << team.id << "," << matchType << "," << result << "\n";
 
-        // === MVP logic ===
-        int nonBackupIndices[50]; // temporary array to store indices of non-backup players
+        int nonBackupIndices[50];
         int count = 0;
 
         for (int j = 0; j < playerCount; j++) {
@@ -224,7 +243,7 @@ void logMatchAndStats(string matchId, string matchType, Team team1, Team team2, 
 
         int mvpIndex = -1;
         if (team.id == winnerId && count > 0) {
-            mvpIndex = nonBackupIndices[rand() % count]; // pick random non-backup player
+            mvpIndex = nonBackupIndices[rand() % count];
         }
 
         for (int i = 0; i < count; i++) {
@@ -241,26 +260,30 @@ void logMatchAndStats(string matchId, string matchType, Team team1, Team team2, 
     }
 }
 
-
 void runTournament(Team qualified[MAX_QUALIFIED]) {
-    int roundCount = MAX_QUALIFIED;
-    Team currentRound[MAX_QUALIFIED];
+    Round firstRound;
     for (int i = 0; i < MAX_QUALIFIED; i++) {
-        currentRound[i] = qualified[i];
+        firstRound.teams[i] = qualified[i];
     }
+    firstRound.count = MAX_QUALIFIED;
+    enqueueRound(firstRound);
 
     int round = 1;
 
-    while (roundCount > 1) {
-        cout << "\n========== ROUND " << round << " ==========\n";
+    while (front < rear) {
+        Round current = dequeueRound();
+        pushHistory(current);
 
+        int roundCount = current.count;
+
+        cout << "\n========== ROUND " << round << " ==========\n";
         string matchType = (round == 1) ? "Quarterfinal" : (round == 2) ? "Semifinal" : "Final";
 
-        sortTeamsByPoints(currentRound, roundCount);
-        displayMatches(currentRound, roundCount);
+        sortTeamsByPoints(current.teams, roundCount);
+        displayMatches(current.teams, roundCount);
 
-        Team nextRound[MAX_QUALIFIED];
-        int nextCount = 0;
+        Round next;
+        next.count = 0;
 
         for (int i = 0; i + 1 < roundCount; i += 2) {
             string winnerId;
@@ -268,12 +291,12 @@ void runTournament(Team qualified[MAX_QUALIFIED]) {
             string matchId = getMatchId();
 
             while (!valid) {
-                cout << "Enter the winning team ID for match (" << currentRound[i].id << " vs " << currentRound[i + 1].id << "): ";
+                cout << "Enter the winning team ID for match (" << current.teams[i].id << " vs " << current.teams[i + 1].id << "): ";
                 cin >> winnerId;
-                if (winnerId == currentRound[i].id || winnerId == currentRound[i + 1].id) {
-                    int index = getTeamIndexById(currentRound, roundCount, winnerId);
-                    nextRound[nextCount++] = currentRound[index];
-                    logMatchAndStats(matchId, matchType, currentRound[i], currentRound[i + 1], winnerId);
+                if (winnerId == current.teams[i].id || winnerId == current.teams[i + 1].id) {
+                    int index = getTeamIndexById(current.teams, roundCount, winnerId);
+                    next.teams[next.count++] = current.teams[index];
+                    logMatchAndStats(matchId, matchType, current.teams[i], current.teams[i + 1], winnerId);
                     valid = true;
                 } else {
                     cout << "Invalid input. Try again.\n";
@@ -282,23 +305,28 @@ void runTournament(Team qualified[MAX_QUALIFIED]) {
         }
 
         if (roundCount % 2 != 0) {
-            nextRound[nextCount++] = currentRound[roundCount - 1];
-            cout << "Team " << currentRound[roundCount - 1].name << " gets a bye to next round.\n";
+            next.teams[next.count++] = current.teams[roundCount - 1];
+            cout << "Team " << current.teams[roundCount - 1].name << " gets a bye to next round.\n";
         }
 
-        for (int i = 0; i < nextCount; i++) {
-            currentRound[i] = nextRound[i];
+        if (next.count == 1) {
+            cout << "\n Winner of the Tournament: " << next.teams[0].name << " [" << next.teams[0].id << "]\n";
+        } else {
+            enqueueRound(next);
         }
-        roundCount = nextCount;
+
         round++;
     }
 
-    if (roundCount == 1) {
-        cout << "\n Winner of the Tournament: " << currentRound[0].name << " [" << currentRound[0].id << "]\n";
+    if (historyTop >= 0) {
+        Round lastRound = peekHistory();
+        cout << "\n--- Last Round Teams ---\n";
+        for (int i = 0; i < lastRound.count; i++) {
+            cout << lastRound.teams[i].name << " [" << lastRound.teams[i].id << "]\n";
+        }
     }
 }
 
-// Entry point
 void manageMatches() {
     srand(time(0));
     readCSV("Groups_dataset.csv");
