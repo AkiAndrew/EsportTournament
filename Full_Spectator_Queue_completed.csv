@@ -15,7 +15,7 @@ S028,Cory,Thompson,General,4,No,Seated,27
 S031,Mary,Evans,General,4,Yes,Seated,28
 S034,Daniel,Ferrell,General,4,Yes,Seated,29
 S039,Cassandra,DVM,General,4,No,Seated,30
-S042,Lauren,Bennett,General,4,Yes,Seated,31
+S042,Lauren,Bennett,General,4,Yes,Waiting,
 S044,Shannon,Fox,General,4,No,Waiting,
 S045,Erika,Barber,General,4,No,Waiting,
 S047,Jeff,Boyd,General,4,Yes,Waiting,
@@ -59,7 +59,7 @@ S076,Heather,Dunn,Influencer,2,No,Seated,11
 S087,Colleen,Taylor,Influencer,2,Yes,Seated,12
 S092,Christina,Manning,Influencer,2,No,Seated,13
 S099,Stephen,Conrad,Influencer,2,No,Seated,14
-S001,James,Smith,Streamer,3,Yes,Waiting,
+S001,James,Smith,Streamer,3,Yes,Streaming,1
 S002,Katelyn,Morris,Streamer,3,No,Streaming,2
 S004,Katie,Hayes,Streamer,3,Yes,Streaming,3
 S005,Brian,Howell,Streamer,3,No,Streaming,4
@@ -69,7 +69,7 @@ S013,Matthew,Richards,Streamer,3,No,Streaming,7
 S015,Amanda,Odom,Streamer,3,No,Streaming,8
 S016,Sandra,Jones,Streamer,3,No,Streaming,9
 S021,Sarah,Campbell,Streamer,3,Yes,Streaming,10
-S025,Krista,Mccoy,Streamer,3,Yes,Streaming,10
+S025,Krista,Mccoy,Streamer,3,Yes,Waiting,
 S029,Jacqueline,Lopez,Streamer,3,No,Waiting,
 S030,Leonard,King,Streamer,3,No,Waiting,
 S032,Paul,Ortiz,Streamer,3,No,Waiting,
@@ -99,4 +99,3 @@ S035,Elizabeth,Perez,VIP,1,Yes,Seated,5
 S038,Whitney,Gonzales,VIP,1,Yes,Seated,6
 S040,Patrick,Oconnor,VIP,1,Yes,Seated,7
 S041,Larry,Delacruz,VIP,1,Yes,Seated,8
-S101,Chew,JiaZhi,VIP,1,Yes,Waiting,
