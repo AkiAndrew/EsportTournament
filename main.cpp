@@ -12,7 +12,7 @@ int main() {
     while (true) {
         cout << "\n===== MAIN MENU =====\n";
         cout << "1. Manage Matches\n";
-        cout << "2. Option 2 (Coming Soon)\n";
+        cout << "2. Tournament Registration\n";
         cout << "3. Manage Spectators/Live Stream\n";
         cout << "4. View Game Data\n";
         cout << "5. Exit\n";
