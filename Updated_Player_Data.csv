@@ -1,0 +1,101 @@
+10Player ID,First Name,Last Name,Team ID,Team Name,University
+P001,Melissa,Lopez,T01,StillAnimal,North Jamesmouth University
+P002,Jeremy,Lopez,T01,StillAnimal,North Jamesmouth University
+P003,Brandon,Martin,T01,StillAnimal,North Jamesmouth University
+P004,Antonio,Wolf,T01,StillAnimal,North Jamesmouth University
+P005,Sandra,Brown,T01,StillAnimal,North Jamesmouth University
+P006,Meghan,Harris,T02,BarCommon,Nicolechester University
+P007,Timothy,Conner,T02,BarCommon,Nicolechester University
+P008,Dawn,Wilson,T02,BarCommon,Nicolechester University
+P009,Andrew,Tate,T02,BarCommon,Nicolechester University
+P010,George,Jackson,T02,BarCommon,Nicolechester University
+P011,Eric,Andrews,T03,DecideLight,South Randy University
+P012,Jonathan,Franklin,T03,DecideLight,South Randy University
+P013,Noah,Hill,T03,DecideLight,South Randy University
+P014,Keith,Jones,T03,DecideLight,South Randy University
+P015,Kevin,Lee,T03,DecideLight,South Randy University
+P016,Margaret,Allen,T04,PositionComputer,Joneshaven University
+P017,Elijah,Thomas,T04,PositionComputer,Joneshaven University
+P018,Larry,Davis,T04,PositionComputer,Joneshaven University
+P019,Samantha,Bruce,T04,PositionComputer,Joneshaven University
+P020,Kimberly,Logan,T04,PositionComputer,Joneshaven University
+P021,Danielle,Moss,T05,MotherHerself,West Joshua University
+P022,Lonnie,Castro,T05,MotherHerself,West Joshua University
+P023,Kimberly,Jenkins,T05,MotherHerself,West Joshua University
+P024,Elijah,Anthony,T05,MotherHerself,West Joshua University
+P025,Katherine,Thomas,T05,MotherHerself,West Joshua University
+P026,Martha,Richardson,T06,AirResponse,Alejandrashire University
+P027,Thomas,Thornton,T06,AirResponse,Alejandrashire University
+P028,Margaret,Ford,T06,AirResponse,Alejandrashire University
+P029,Kimberly,Nguyen,T06,AirResponse,Alejandrashire University
+P030,James,Powell,T06,AirResponse,Alejandrashire University
+P031,Mackenzie,Harris,T07,SortSong,Lake Amy University
+P032,Jennifer,Church,T07,SortSong,Lake Amy University
+P033,Ryan,Jackson,T07,SortSong,Lake Amy University
+P034,Zachary,White,T07,SortSong,Lake Amy University
+P035,Whitney,Underwood,T07,SortSong,Lake Amy University
+P036,Daniel,Vargas,T08,WestDegree,East Lori University
+P037,Erika,Parker,T08,WestDegree,East Lori University
+P038,Vincent,Mccormick,T08,WestDegree,East Lori University
+P039,Anthony,Sanchez,T08,WestDegree,East Lori University
+P040,Lindsey,Wood,T08,WestDegree,East Lori University
+P041,Matthew,Butler,T09,TechnologyOther,Lake Renee University
+P042,Marvin,Walters,T09,TechnologyOther,Lake Renee University
+P043,Erin,Marquez,T09,TechnologyOther,Lake Renee University
+P044,Kelly,Martin,T09,TechnologyOther,Lake Renee University
+P045,Michael,Young,T09,TechnologyOther,Lake Renee University
+P046,Christopher,Martinez,T10,MrLeg,North Patriciahaven University
+P047,Bonnie,Woods,T10,MrLeg,North Patriciahaven University
+P048,William,Dorsey,T10,MrLeg,North Patriciahaven University
+P049,Jennifer,Brooks,T10,MrLeg,North Patriciahaven University
+P050,Crystal,Mckee,T10,MrLeg,North Patriciahaven University
+P051,Linda,Ray,T11,SourceDuring,Hoffmantown University
+P052,Lindsay,Powers,T11,SourceDuring,Hoffmantown University
+P053,Greg,Smith,T11,SourceDuring,Hoffmantown University
+P054,Carol,Santiago,T11,SourceDuring,Hoffmantown University
+P055,Michelle,Pope,T11,SourceDuring,Hoffmantown University
+P056,Hannah,Martin,T12,GiveLow,North Christine University
+P057,Shannon,Branch,T12,GiveLow,North Christine University
+P058,Joshua,Harris,T12,GiveLow,North Christine University
+P059,Billy,Martinez,T12,GiveLow,North Christine University
+P060,Jeremy,Miller,T12,GiveLow,North Christine University
+P061,Jared,Wu,T13,ActuallyFace,Leeton University
+P062,Arthur,Wade,T13,ActuallyFace,Leeton University
+P063,Randall,Smith,T13,ActuallyFace,Leeton University
+P064,Tanya,Monroe,T13,ActuallyFace,Leeton University
+P065,Richard,Martin,T13,ActuallyFace,Leeton University
+P066,Robert,Robinson,T14,CongressNumber,North Nicole University
+P067,Renee,Hamilton,T14,CongressNumber,North Nicole University
+P068,Wendy,Williams,T14,CongressNumber,North Nicole University
+P069,Stacey,Day,T14,CongressNumber,North Nicole University
+P070,Tiffany,Zimmerman,T14,CongressNumber,North Nicole University
+P071,Danielle,Herrera,T15,MethodArt,Tiffanyshire University
+P072,Sean,Oconnell,T15,MethodArt,Tiffanyshire University
+P073,William,Vasquez,T15,MethodArt,Tiffanyshire University
+P074,Tanya,Lee,T15,MethodArt,Tiffanyshire University
+P075,Michael,Powell,T15,MethodArt,Tiffanyshire University
+P076,Adam,Turner,T16,ReceiveProperty,Williamstown University
+P077,Randy,Miller,T16,ReceiveProperty,Williamstown University
+P078,Sophia,Ford,T16,ReceiveProperty,Williamstown University
+P079,Bailey,Stevens,T16,ReceiveProperty,Williamstown University
+P080,Cynthia,Tucker,T16,ReceiveProperty,Williamstown University
+P081,Christopher,Cox,T17,ToughResearch,Lake Jennifer University
+P082,Nichole,Barber,T17,ToughResearch,Lake Jennifer University
+P083,Jeffrey,King,T17,ToughResearch,Lake Jennifer University
+P084,Shannon,Cooper,T17,ToughResearch,Lake Jennifer University
+P085,Michael,Wyatt,T17,ToughResearch,Lake Jennifer University
+P086,Julie,Peterson,T18,QuestionShort,Boothmouth University
+P087,Derek,Thompson,T18,QuestionShort,Boothmouth University
+P088,Paul,Richardson,T18,QuestionShort,Boothmouth University
+P089,Jennifer,Delgado,T18,QuestionShort,Boothmouth University
+P090,David,Campbell,T18,QuestionShort,Boothmouth University
+P091,Sue,Richard,T19,CentralEconomic,North John University
+P092,Adriana,Rojas,T19,CentralEconomic,North John University
+P093,Russell,Rios,T19,CentralEconomic,North John University
+P094,Craig,Williams,T19,CentralEconomic,North John University
+P095,Laura,Parker,T19,CentralEconomic,North John University
+P096,Brianna,Phillips,T20,LevelSame,Jefferyton University
+P097,Shawn,Mccoy,T20,LevelSame,Jefferyton University
+P098,Janet,Johnson,T20,LevelSame,Jefferyton University
+P099,John,Brown,T20,LevelSame,Jefferyton University
+P100,Andrew,Daniel,T20,LevelSame,Jefferyton University
