@@ -3,8 +3,10 @@
 #include <sstream>
 #include <string>
 #include <iomanip>
+#include <stack>
 
 using namespace std;
+stack<string> playerSearchHistory; // Global stack to store player search history
 
 // === Helper Functions ===
 bool containsIgnoreCase(const string& text, const string& keyword) {
@@ -87,7 +89,9 @@ void searchPlayerStats() {
 
     switch (choice) {
         case 1:
-            cout << "Enter Player ID: "; cin >> keyword;
+            cout << "Enter Player ID: "; 
+            cin >> keyword;
+            playerSearchHistory.push(keyword); // Store search history
             break;
         case 2:
             cout << "Enter Team ID: "; cin >> keyword;
@@ -183,6 +187,7 @@ void databaseMenu() {
         cout << "2. Display all match results\n";
         cout << "3. Search player stats\n";
         cout << "4. Search match results\n";
+        cout << "5. View last searched player ID\n";
         cout << "0. Back to main menu\n";
         cout << "Enter choice: ";
         cin >> choice;
@@ -199,6 +204,13 @@ void databaseMenu() {
                 break;
             case 4:
                 searchMatchResults();
+                break;
+            case 5:
+                if (!playerSearchHistory.empty()) {
+                    cout << "\nLast searched Player ID: " << playerSearchHistory.top() << "\n";
+                } else {
+                    cout << "\nNo recent searches.\n";
+                }
                 break;
             case 0:
                 cout << "Returning to main menu.\n";
