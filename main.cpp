@@ -1,4 +1,5 @@
 #include <iostream>
+#include "spectator_manager.h"
 using namespace std;
 
 // Declare external functions
@@ -12,7 +13,7 @@ int main() {
         cout << "\n===== MAIN MENU =====\n";
         cout << "1. Manage Matches\n";
         cout << "2. Option 2 (Coming Soon)\n";
-        cout << "3. Option 3 (Coming Soon)\n";
+        cout << "3. Manage Spectators/Live Stream\n";
         cout << "4. View Game Data\n";
         cout << "5. Exit\n";
         cout << "Choose an option (1-5): ";
@@ -26,7 +27,7 @@ int main() {
                 cout << "Option 2 not implemented yet.\n";
                 break;
             case 3:
-                cout << "Option 3 not implemented yet.\n";
+                manageSpectators();
                 break;
             case 4:
                 databaseMenu(); // Calls function from database_viewer.cpp
